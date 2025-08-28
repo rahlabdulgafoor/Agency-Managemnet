@@ -242,3 +242,20 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+# In apps/agency/agency/hooks.py
+
+fixtures = [
+    # Export your custom DocTypes
+    {"dt": "Custom Field", "filters": [["dt", "in", ["Agency", "Manufactur", "Item"]]]},
+
+    # Export Workspaces
+    {"dt": "Workspace", "filters": [["module", "=", "Agency"]]},  
+
+
+    # Export Reports if you have any linked to these doctypes
+    {"dt": "Report", "filters": [["ref_doctype", "in", ["Agency", "Manufactur", "Item"]]]},
+
+    # Export Print Formats if needed
+    {"dt": "Print Format", "filters": [["doc_type", "in", ["Agency", "Manufactur", "Item"]]]}
+]
+
